@@ -17,7 +17,7 @@ const WeekdayDateRangePicker: React.FC<WeekdayDateRangePickerProps> = ({
 
   const handleDateSelection = (start: Date, end: Date) => {
     if (isNaN(start.getTime()) || isNaN(end.getTime())) {
-      return; // Exit if dates are invalid
+      return;
     }
 
     const range: string[] = [];
@@ -74,14 +74,13 @@ const WeekdayDateRangePicker: React.FC<WeekdayDateRangePickerProps> = ({
   const handleClearDates = () => {
     setStartDate(null);
     setEndDate(null);
-    setError(null); // Reset error message
+    setError(null);
   };
 
   return (
     <div className="p-6 max-w-lg mx-auto bg-gray-800 shadow-lg rounded-md text-white">
       <h2 className="text-xl font-bold mb-4">Weekday Date Range Picker</h2>
 
-      {/* Date Inputs */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         <div>
           <label
@@ -113,10 +112,7 @@ const WeekdayDateRangePicker: React.FC<WeekdayDateRangePickerProps> = ({
         </div>
       </div>
 
-      {/* Error Message */}
       {error && <p className="text-red-500 mb-4">{error}</p>}
-
-      {/* Success Message */}
       {startDate && endDate && !error && (
         <p className="text-green-500 mb-4">
           Date range selected:{" "}
@@ -130,7 +126,6 @@ const WeekdayDateRangePicker: React.FC<WeekdayDateRangePickerProps> = ({
         </p>
       )}
 
-      {/* Clear Button */}
       <button
         className="w-full bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition duration-200 shadow-lg mb-4"
         onClick={handleClearDates}
@@ -138,7 +133,6 @@ const WeekdayDateRangePicker: React.FC<WeekdayDateRangePickerProps> = ({
         Clear Dates
       </button>
 
-      {/* Predefined Ranges */}
       <h3 className="text-lg font-semibold mb-2">Predefined Ranges</h3>
       <ul className="space-y-2">
         {predefinedRanges.map((range, idx) => (
