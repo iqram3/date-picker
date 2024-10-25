@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import WeekdayDateRangePicker from "./components/WeekdayDateRangePicker";
 
-function App() {
+const App = () => {
+  const handleRangeChange = (weekdays: string[], weekends: string[]) => {
+    console.log("Selected weekdays: ", weekdays);
+    console.log("Selected weekends: ", weekends);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <WeekdayDateRangePicker
+        onChange={handleRangeChange}
+        predefinedRanges={[
+          {
+            label: "This Week",
+            range: [new Date("2024-10-21"), new Date("2024-10-24")],
+          },
+          {
+            label: "Last Month",
+            range: [new Date("2024-09-01"), new Date("2024-09-30")],
+          },
+        ]}
+      />
     </div>
   );
-}
+};
 
 export default App;
